@@ -4,17 +4,17 @@ const tryConfirming = require('./tryConfirming');
 const delay = require('../utils/delay');
 
 const FIVE_MINUTES = 1000 * 60 * 5;
-const waitFiveMinutesAndRetry = async (page, mountain, month, day, year, retries) => {
+const waitFiveMinutesAndRetry = async (page, mountain, month, day, year, retries, email, pw) => {
     await delay(FIVE_MINUTES); // wait five minutes;
     await page.reload({
         waitUntil: ['networkidle0', 'domcontentloaded'],
     });
 
-    await loginUtils.checkSessionExpired(page);
+    await loginUtils.checkSessionExpired(page, email, pw);
     await runWithRetries(page, mountain, month, day, year, retries - 1);
 };
 
-const runWithRetries = async (page, mountain, month, day, year, retries) => {
+const runWithRetries = async (page, mountain, month, day, year, retries, email, pw) => {
     try {
         await selectMountainAndCheckDay(page, mountain, month, day, year);
         const spotReserved = await tryConfirming(page, mountain, month, day, year, retries);
@@ -24,7 +24,7 @@ const runWithRetries = async (page, mountain, month, day, year, retries) => {
             return true;
         } else if (retries > 0) {
             console.log(`date not available - waiting five minutes and retying. Retries left: ${retries}`);
-            await waitFiveMinutesAndRetry(page, mountain, month, day, year, retries);
+            await waitFiveMinutesAndRetry(page, mountain, month, day, year, retries, email, pw);
         } else {
             console.log('Exhausted retries');
             return false;
@@ -34,7 +34,7 @@ const runWithRetries = async (page, mountain, month, day, year, retries) => {
         if (retries > 0) {
             console.log(`Waiting five minutes and retying - Retries left: ${retries}`);
             console.log('******************************');
-            await waitFiveMinutesAndRetry(page, mountain, month, day, year, retries);
+            await waitFiveMinutesAndRetry(page, mountain, month, day, year, retries, email, pw);
         } else {
             return false;
         }
