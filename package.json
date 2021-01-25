@@ -11,6 +11,7 @@
   "dependencies": {
     "cheerio": "^1.0.0-rc.5",
     "chrome-launcher": "^0.13.4",
+    "inquirer": "^7.3.3",
     "puppeteer": "^5.5.0",
     "request": "^2.88.2",
     "util": "^0.12.3"

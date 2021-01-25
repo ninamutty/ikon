@@ -1,4 +1,4 @@
-const logInToIkon = async (page) => {
+const logInToIkon = async (page, email, pw) => {
     // navigate to ikon
     await page.goto('https://account.ikonpass.com/en/login', {
         waitUntil: 'domcontentloaded',
@@ -7,9 +7,9 @@ const logInToIkon = async (page) => {
 
     console.log('logging in');
     const emailInput = await page.$('#email');
-    await emailInput.type('');
+    await emailInput.type(email);
     const passwordInput = await page.$('#sign-in-password');
-    await passwordInput.type('');
+    await passwordInput.type(pw);
     // console.log(passwordInput, "passwordInput");
 
     const submitBtn = await page.$('.submit');
@@ -22,7 +22,7 @@ const logInToIkon = async (page) => {
     ]);
 };
 
-const checkSessionExpired = async (page) => {
+const checkSessionExpired = async (page, email, pw) => {
         // check if session expired
         const sessionExpired = await page.$x(`//h1[contains(., 'Session Expired')]`);
         if (sessionExpired.length > 0) {
@@ -31,7 +31,7 @@ const checkSessionExpired = async (page) => {
             const closeBtn = await page.$('.modal-primary-action.button-confirm');
             await closeBtn.click();
             await delay(500);
-            await logInToIkon(page);
+            await logInToIkon(page, email, pw);
         }
 }
 
