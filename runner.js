@@ -3,7 +3,7 @@ const runWithRetries = require('./src/ikonInteractions/runnerWithRetries');
 const loginUtils = require('./src/ikonInteractions/handleLogin');
 const delay = require('./src/utils/delay');
 
-const runner = async (mountain, month, day, year) => {
+const runner = async (email, pw, mountain, month, day, year) => {
     let browser;
     let page;
 
@@ -11,7 +11,7 @@ const runner = async (mountain, month, day, year) => {
         browser = await setupChrome(false);
         page = await browser.newPage();
 
-        await loginUtils.logInToIkon(page);
+        await loginUtils.logInToIkon(page, email, pw);
         await runWithRetries(page, mountain, month, day, year, 0);
     } catch (e) {
         console.log('Error running program, exiting now');
@@ -26,7 +26,7 @@ const runner = async (mountain, month, day, year) => {
     }
 };
 
-runner('Crystal Mountain Resort', 'January', '16', '2021');
+module.exports = runner;
 
 /*
  * More things to do
