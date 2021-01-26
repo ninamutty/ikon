@@ -3,7 +3,7 @@ const runWithRetries = require('./src/ikonInteractions/runnerWithRetries');
 const loginUtils = require('./src/ikonInteractions/handleLogin');
 const delay = require('./src/utils/delay');
 
-const runner = async (email, pw, mountain, month, day, year) => {
+const runner = async (logInInfo, mountain, date, buddy, retries) => {
     let browser;
     let page;
 
@@ -11,8 +11,8 @@ const runner = async (email, pw, mountain, month, day, year) => {
         browser = await setupChrome(false);
         page = await browser.newPage();
 
-        await loginUtils.logInToIkon(page, email, pw);
-        await runWithRetries(page, mountain, month, day, year, 0);
+        await loginUtils.logInToIkon(page, logInInfo);
+        await runWithRetries(page, mountain, date, retries, logInInfo, buddy);
     } catch (e) {
         console.log('Error running program, exiting now');
     }
