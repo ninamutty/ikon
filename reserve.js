@@ -6,12 +6,12 @@ inquirer
     {
       name: "email",
       message: "What's your ikon account email?",
-      default: "ninamutty@gmail.com",
+      default: "",
     },
     {
       name: "password",
       message: "What's your ikon account password?",
-      default: "rZ78qeZkeWVzCmG",
+      default: "",
     },
     {
       name: "mountain",
