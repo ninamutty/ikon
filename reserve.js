@@ -79,6 +79,11 @@ inquirer
       message: "Max retries?",
       default: "60",
     },
+    {
+        name: "background",
+        message: "Run in background? (You won't be able to see the website)",
+        default: "yes",
+      },
   ])
   .then((answers) => {
     const logInInfo = {
@@ -92,10 +97,12 @@ inquirer
       year: "2021",
     };
 
+    const headless = answers.background === 'yes';
+
     const parsed = parseInt(answers.retries);
     const retries = (isNaN(parsed)) ? 60 : parsed;
 
-    runner(logInInfo, answers.mountain, date, answers.buddy, retries);
+    runner(logInInfo, answers.mountain, date, answers.buddy, retries, headless);
   })
   .catch((error) => {
     console.log(error);

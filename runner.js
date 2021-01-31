@@ -3,12 +3,12 @@ const runWithRetries = require('./src/ikonInteractions/runnerWithRetries');
 const loginUtils = require('./src/ikonInteractions/handleLogin');
 const delay = require('./src/utils/delay');
 
-const runner = async (logInInfo, mountain, date, buddy, retries) => {
+const runner = async (logInInfo, mountain, date, buddy, retries, headless) => {
     let browser;
     let page;
 
     try {
-        browser = await setupChrome(false);
+        browser = await setupChrome(headless);
         page = await browser.newPage();
 
         await loginUtils.logInToIkon(page, logInInfo);

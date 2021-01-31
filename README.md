@@ -32,6 +32,7 @@ This project is still a work in progress! As such, there are a few limitations t
 ### Running the Tool
 * In your terminal, while in the project directory, run `node ./reserve.js`
 * Answer the prompts 
+* The tool update you on it's status in the terminal as it runs
 
 
 --------------------
