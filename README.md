@@ -1,12 +1,12 @@
 # Ikon Reservations
 In order to never miss a pow day (the travesty!), I built this tool to help reserve ski days through the [ikon pass website](https://www.ikonpass.com/) - especially when those coveted pow days happen to booked full..
 
---------------------
+
 ## How it Works
 When you start the tool, it'll prompt you for some basic information, including your email and password (this data won't be saved) and your desired mountain and date to reserve. Then it will start running in the background, logging in to your ikon pass and checking for availability every 5 minutes until it either successfully reserves your day or exhausts attempts (there's a default max of 60 retries).
 
 
---------------------
+
 ## Limitations
 This project is still a work in progress! As such, there are a few limitations that you should be aware of before using it..
 
@@ -15,7 +15,7 @@ This project is still a work in progress! As such, there are a few limitations t
 * Use the default input values when able, we don't support custom values today
 
 
---------------------
+
 ## Setup
 ### Prereqs
 * Open the terminal app on your computer (run the below commands in terminal)
@@ -35,7 +35,7 @@ This project is still a work in progress! As such, there are a few limitations t
 * The tool update you on it's status in the terminal as it runs
 
 
---------------------
+
 ## Want to Contribute?
 I'm open to help and suggestions to make this tool better! Submit a PR or email me at ninamutty@gmail.com to help out
 
