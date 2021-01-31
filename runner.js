@@ -27,14 +27,3 @@ const runner = async (logInInfo, mountain, date, buddy, retries) => {
 };
 
 module.exports = runner;
-
-/*
- * More things to do
- *
- * command line arguments?
- * multi-day select
- * input verification
- * search for mountain
- * build it into a webapp?
- * automatically reserve/cancel based on NOAA weather forcast --> build into google calendar
- */
