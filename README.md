@@ -34,6 +34,8 @@ This project is still a work in progress! As such, there are a few limitations t
 * Answer the prompts 
 * The tool update you on it's status in the terminal as it runs
 
+*Note: once you've cloned the project to your computer, you should run pull down the latest changes regularly to get updates*
+  * This can be done by entering `git pull` from the project's directory in your terminal
 
 
 ## Want to Contribute?

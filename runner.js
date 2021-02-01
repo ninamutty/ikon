@@ -10,6 +10,7 @@ const runner = async (logInInfo, mountain, date, buddy, retries, headless) => {
     try {
         browser = await setupChrome(headless);
         page = await browser.newPage();
+        await page.setDefaultTimeout(60000); 
 
         await loginUtils.logInToIkon(page, logInInfo);
         await runWithRetries(page, mountain, date, retries, logInInfo, buddy);
